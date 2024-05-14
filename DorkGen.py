@@ -1,12 +1,9 @@
-import tkinter as tk
-from tkinter import filedialog
-from tkinter import scrolledtext
-from tkinter import messagebox
+import PySimpleGUI as sg
 
-def combine_texts():
-    text1 = input_boxes[0].get("1.0", tk.END).splitlines()
-    text2 = input_boxes[1].get("1.0", tk.END).splitlines()
-    text3 = input_boxes[2].get("1.0", tk.END).splitlines()
+def combine_texts(values):
+    text1 = values['-PAGE_NAME-'].split('\n')
+    text2 = values['-PAGE_FORMAT-'].split('\n')
+    text3 = values['-PAGE_TYPE-'].split('\n')
 
     output_text = []
     for line1 in text1:
@@ -14,62 +11,38 @@ def combine_texts():
             for line3 in text3:
                 output_text.append(line1 + line2 + line3)
 
-    output_box.delete("1.0", tk.END)
-    output_box.insert("1.0", '\n'.join(output_text))
+    window['-OUTPUT-'].update('\n'.join(output_text))
 
-def save_as():
-    file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
-    if not file_path:
-        return
-    with open(file_path, 'w') as f:
-        lines = list(set(output_box.get("1.0", tk.END).splitlines()))
-        f.write('\n'.join(lines))
+def save_as(values):
+    file_path = sg.popup_get_file('Save As', save_as=True, default_extension='.txt', file_types=(("Text files", "*.txt"), ("All files", "*.*")))
+    if file_path:
+        with open(file_path, 'w') as f:
+            lines = list(set(window['-OUTPUT-'].get().split('\n')))
+            f.write('\n'.join(lines))
 
 def show_about():
     about_text = "DorkGen is a script for generating combinations of keywords typically used in web page URLs for various purposes such as web scraping, testing, or other security-related tasks.\n\nFor more information and updates please visit https://github.com/noarche/dorkGen\n\nBuild Information:\nMay 14 2024"
-    messagebox.showinfo("About DorkGen", about_text)
+    sg.popup('About DorkGen', about_text)
 
-root = tk.Tk()
-root.title("DorkGen")
-root.geometry("800x600")
-root.configure(bg='black')
-root.resizable(False, False)  
-
-# Main frame
-main_frame = tk.Frame(root, bg='black')
-main_frame.pack(pady=20)
-
-# Labels and input boxes
-labels = ["Page Name", "Page Format", "Page Type"]
-input_texts = [
-    "cart\ncreditcard\npay\npayment\npayments\ncheckout\nshop\nshopping\nclothing\nrefund\npurchase\nshipment\nbitcoin\ngiftcard\npaypal",
-    ".php?\n.aspx?\n.asp?\n.html?",
-    "id=\narticle=\nforum_id=\nitem=\noption=\ncategory=\nPageid=\nindex=\ntitle=\ntopic=\nlist=\nGameID=\ngame=\nshowtopic=\nitem=\nnewsid="
+layout = [
+    [sg.Text('Page Name', text_color='white'), sg.Text('Page Format', text_color='white'), sg.Text('Page Type', text_color='white')],
+    [sg.Multiline("cart\ncreditcard\npay\npayment\npayments\ncheckout\nshop\nshopping\nclothing\nrefund\npurchase\nshipment\nbitcoin\ngiftcard\npaypal", size=(20,10), key='-PAGE_NAME-', text_color='white', background_color='black'), sg.Multiline(".php?\n.aspx?\n.asp?\n.html?", size=(20,10), key='-PAGE_FORMAT-', text_color='white', background_color='black'), sg.Multiline("id=\narticle=\nforum_id=\nitem=\noption=\ncategory=\nPageid=\nindex=\ntitle=\ntopic=\nlist=\nGameID=\ngame=\nshowtopic=\nitem=\nnewsid=", size=(20,10), key='-PAGE_TYPE-', text_color='white', background_color='black')],
+    [sg.Text('Gen Results', text_color='white')],
+    [sg.Multiline('..press generate for results..', size=(80,10), key='-OUTPUT-', text_color='white', background_color='black')],
+    [sg.Button('Generate', size=(10,1)), sg.Button('Save As', size=(10,1)), sg.Button('About', size=(10,1))]
 ]
-input_boxes = []
 
-for i, (label_text, default_text) in enumerate(zip(labels, input_texts)):
-    label = tk.Label(main_frame, text=label_text, fg='white', bg='black')
-    label.grid(row=0, column=i, pady=10, padx=5)
-    input_box = scrolledtext.ScrolledText(main_frame, width=20, height=10, fg="white", bg="black", insertbackground='white')
-    input_box.insert("1.0", default_text)
-    input_box.grid(row=1, column=i, pady=10, padx=5)
-    input_boxes.append(input_box)
+window = sg.Window('DorkGen', layout, background_color='black', finalize=True)
 
-# Generate results label and output box
-tk.Label(root, text="Gen Results", fg='white', bg='black').pack(pady=10)
-output_box = scrolledtext.ScrolledText(root, width=80, height=10, fg="white", bg="black", insertbackground='white')
-output_box.insert("1.0", "..press generate for results..")
-output_box.pack(pady=10)
+while True:
+    event, values = window.read()
+    if event == sg.WINDOW_CLOSED:
+        break
+    if event == 'Generate':
+        combine_texts(values)
+    elif event == 'Save As':
+        save_as(values)
+    elif event == 'About':
+        show_about()
 
-# Buttons
-process_btn = tk.Button(root, text="Generate", command=combine_texts, fg="white", bg="gray10")
-process_btn.pack(pady=5, side=tk.LEFT, padx=20)
-
-save_btn = tk.Button(root, text="Save As", command=save_as, fg="white", bg="gray10")
-save_btn.pack(pady=5, side=tk.LEFT)
-
-about_btn = tk.Button(root, text="About", command=show_about, fg="white", bg="gray10")
-about_btn.pack(pady=5, side=tk.LEFT)
-
-root.mainloop()
+window.close()
