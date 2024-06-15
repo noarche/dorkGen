@@ -1,5 +1,5 @@
 # dorkGen
-Quickly create a list of dorks based on variables entered.
+DorkGen is a script for generating combinations of keywords typically used in web page URLs for various purposes such as web scraping, testing, or other security-related tasks. Quickly create a list of dorks based on variables entered.
 
 
 ![screenshot](https://github.com/noarche/dorkGen/blob/main/dgss.png?raw=true)
