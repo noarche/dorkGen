@@ -1,5 +1,4 @@
 import PySimpleGUI as sg
-import sys
 
 # Popup message that the user must acknowledge
 disclaimer_text = (
@@ -9,13 +8,7 @@ disclaimer_text = (
     'shall not be held liable for any misuse or damage arising from its application. It is your responsibility to ensure that your use complies '
     'with all applicable laws and regulations.'
 )
-
-# Show the disclaimer popup with "I Agree" and "I Do Not Agree" buttons
-event = sg.popup_ok_cancel(disclaimer_text, title='Disclaimer', button_color=('white', 'red'))
-
-# If the user clicks "Cancel" (or "I Do Not Agree"), terminate the script
-if event == 'Cancel':
-    sys.exit()
+sg.popup_ok(disclaimer_text)
 
 def combine_texts(values):
     text1 = values['-PAGE_NAME-'].split('\n')
@@ -37,19 +30,23 @@ def save_as(values):
             lines = list(set(window['-OUTPUT-'].get().split('\n')))
             f.write('\n'.join(lines))
 
+def copy_to_clipboard(values):
+    sg.clipboard_set(values['-OUTPUT-'])
+
 def show_about():
-    about_text = "DorkGen is a script for generating combinations of keywords typically used in web page URLs for various purposes such as web scraping, testing, or other security-related tasks.\n\nFor more information and updates please visit https://github.com/noarche/dorkGen\n\nBuild Information:\nJUNE 15 2024"
+    about_text = "DorkGen is a script for generating combinations of keywords typically used in web page URLs for various purposes such as web scraping, testing, or other security-related tasks.\n\nFor more information and updates please visit https://github.com/noarche/dorkGen\n\nBuild Information:\nMay 14 2024"
     sg.popup('About DorkGen', about_text)
 
 layout = [
     [sg.Text('Page Name', text_color='white'), sg.Text('Page Format', text_color='white'), sg.Text('Page Type', text_color='white')],
     [sg.Multiline("cart\ncreditcard\npay\npayment\npayments\ncheckout\nshop\nshopping\nclothing\nrefund\npurchase\nshipment\nbitcoin\ngiftcard\npaypal", size=(20,10), key='-PAGE_NAME-', text_color='white', background_color='black'), sg.Multiline(".php?\n.aspx?\n.asp?\n.html?", size=(20,10), key='-PAGE_FORMAT-', text_color='white', background_color='black'), sg.Multiline("id=\narticle=\nforum_id=\nitem=\noption=\ncategory=\nPageid=\nindex=\ntitle=\ntopic=\nlist=\nGameID=\ngame=\nshowtopic=\nitem=\nnewsid=", size=(20,10), key='-PAGE_TYPE-', text_color='white', background_color='black')],
-    [sg.Text('Gen Results', text_color='white')],
-    [sg.Multiline('..press generate for results..', size=(80,10), key='-OUTPUT-', text_color='white', background_color='black')],
-    [sg.Button('Generate', size=(10,1)), sg.Button('Save As', size=(10,1)), sg.Button('About', size=(10,1))]
+    [sg.Text('Results:', text_color='green')],
+    [sg.Multiline('..press generate for results..', size=(68,10), key='-OUTPUT-', text_color='white', background_color='black')],
+    [sg.Button('Generate', size=(10,1)), sg.Button('Save As', size=(10,1)), sg.Button('Copy to Clipboard', size=(15,1)), sg.Button('About', size=(10,1))]
 ]
 
-window = sg.Window('DorkGen', layout, background_color='black', finalize=True)
+# Set the alpha channel for semi-transparency
+window = sg.Window('DorkGen', layout, background_color='black', alpha_channel=0.94, finalize=True)
 
 while True:
     event, values = window.read()
@@ -59,6 +56,8 @@ while True:
         combine_texts(values)
     elif event == 'Save As':
         save_as(values)
+    elif event == 'Copy to Clipboard':
+        copy_to_clipboard(values)
     elif event == 'About':
         show_about()
 
