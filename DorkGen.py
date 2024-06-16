@@ -38,9 +38,9 @@ def show_about():
     sg.popup('About DorkGen', about_text)
 
 layout = [
-    [sg.Text('Page Name', text_color='white'), sg.Text('Page Format', text_color='white'), sg.Text('Page Type', text_color='white')],
+    [sg.Text('Page Name', text_color='black', size=(19,1)), sg.Text('Page Format', text_color='black', size=(19,1)), sg.Text('Page Type', text_color='black', size=(19,1))],
     [sg.Multiline("cart\ncreditcard\npay\npayment\npayments\ncheckout\nshop\nshopping\nclothing\nrefund\npurchase\nshipment\nbitcoin\ngiftcard\npaypal", size=(20,10), key='-PAGE_NAME-', text_color='white', background_color='black'), sg.Multiline(".php?\n.aspx?\n.asp?\n.html?", size=(20,10), key='-PAGE_FORMAT-', text_color='white', background_color='black'), sg.Multiline("id=\narticle=\nforum_id=\nitem=\noption=\ncategory=\nPageid=\nindex=\ntitle=\ntopic=\nlist=\nGameID=\ngame=\nshowtopic=\nitem=\nnewsid=", size=(20,10), key='-PAGE_TYPE-', text_color='white', background_color='black')],
-    [sg.Text('Results:', text_color='green')],
+    [sg.Text('Results:', text_color='black')],
     [sg.Multiline('..press generate for results..', size=(68,10), key='-OUTPUT-', text_color='white', background_color='black')],
     [sg.Button('Generate', size=(10,1)), sg.Button('Save As', size=(10,1)), sg.Button('Copy to Clipboard', size=(15,1)), sg.Button('About', size=(10,1))]
 ]
@@ -62,4 +62,5 @@ while True:
         show_about()
 
 window.close()
+
 
