@@ -1,4 +1,21 @@
 import PySimpleGUI as sg
+import sys
+
+# Popup message that the user must acknowledge
+disclaimer_text = (
+    'The information and/or software provided here is intended solely for educational purposes and legal penetration testing purposes. '
+    'By accessing or using this information and/or software, you acknowledge and agree that you assume full responsibility for your actions '
+    'and any consequences that may result from those actions. The creators, contributors, and providers of this information and/or software '
+    'shall not be held liable for any misuse or damage arising from its application. It is your responsibility to ensure that your use complies '
+    'with all applicable laws and regulations.'
+)
+
+# Show the disclaimer popup with "I Agree" and "I Do Not Agree" buttons
+event = sg.popup_ok_cancel(disclaimer_text, title='Disclaimer', button_color=('white', 'red'))
+
+# If the user clicks "Cancel" (or "I Do Not Agree"), terminate the script
+if event == 'Cancel':
+    sys.exit()
 
 def combine_texts(values):
     text1 = values['-PAGE_NAME-'].split('\n')
@@ -21,7 +38,7 @@ def save_as(values):
             f.write('\n'.join(lines))
 
 def show_about():
-    about_text = "DorkGen is a script for generating combinations of keywords typically used in web page URLs for various purposes such as web scraping, testing, or other security-related tasks.\n\nFor more information and updates please visit https://github.com/noarche/dorkGen\n\nBuild Information:\nMay 14 2024"
+    about_text = "DorkGen is a script for generating combinations of keywords typically used in web page URLs for various purposes such as web scraping, testing, or other security-related tasks.\n\nFor more information and updates please visit https://github.com/noarche/dorkGen\n\nBuild Information:\nJUNE 15 2024"
     sg.popup('About DorkGen', about_text)
 
 layout = [
@@ -46,3 +63,4 @@ while True:
         show_about()
 
 window.close()
+
