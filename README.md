@@ -6,32 +6,20 @@ DorkGen is a script for generating combinations of keywords typically used in we
 
 
 -------------------------------------------------------------------
-
-꧁꧂ 🪙 Buy me a coffee 6-6
-
-
-**Bitcoin** address
-
-![Bitcoin bc1qnpjpacyl9sff6r4kfmn7c227ty9g50suhr0y9j](https://raw.githubusercontent.com/noarche/cd-ripper/main/unrelated-ignore/BTC.webp)
-
-    bc1qnpjpacyl9sff6r4kfmn7c227ty9g50suhr0y9j
-
 -------------------------------------------------------------------
 
-**Ethereum** address 
+# ꧁꧂  Buy me a coffee ☕
 
-![Ethereum 0x94FcBab18E4c0b2FAf5050c0c11E056893134266](https://raw.githubusercontent.com/noarche/cd-ripper/main/unrelated-ignore/ETH.webp)
+![qrCode](https://raw.githubusercontent.com/noarche/cd-ripper/main/unrelated-ignore/CryptoQRcodes.png)
 
-    0x94FcBab18E4c0b2FAf5050c0c11E056893134266
+**Bitcoin** address bc1qnpjpacyl9sff6r4kfmn7c227ty9g50suhr0y9j
 
 
--------------------------------------------------------------------
+**Ethereum** address 0x94FcBab18E4c0b2FAf5050c0c11E056893134266
 
-**Litecoin** address 
 
-![Litecoin ltc1qu7ze2hlnkh440k37nrm4nhpv2dre7fl8xu0egx](https://raw.githubusercontent.com/noarche/cd-ripper/main/unrelated-ignore/LTC.webp)
+**Litecoin** address ltc1qu7ze2hlnkh440k37nrm4nhpv2dre7fl8xu0egx
 
-    ltc1qu7ze2hlnkh440k37nrm4nhpv2dre7fl8xu0egx
 
 
 -------------------------------------------------------------------
@@ -43,10 +31,3 @@ DorkGen is a script for generating combinations of keywords typically used in we
 Check out my all in one wordlist manipulator. Many useful combo tools. 
 
 https://github.com/noarche/ComboToolPro-GUI
-
-# Need Proxylist?
-
-Check out my proxylist repo for free API links. 
-
-https://github.com/noarche/proxylist-socks5-sock4-exported-updates
-
