@@ -20,6 +20,7 @@ DorkGen is a script for generating combinations of keywords typically used in we
 
 **Litecoin** address `ltc1qu7ze2hlnkh440k37nrm4nhpv2dre7fl8xu0egx`
 
+![githubstamp](https://github.com/user-attachments/assets/d7b584e2-ba2a-442c-8783-9acb3a4781a5)
 
 
 -------------------------------------------------------------------
