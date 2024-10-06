@@ -1,9 +1,14 @@
 # dorkGen
 DorkGen is a script for generating combinations of keywords typically used in web page URLs for various purposes such as web scraping, testing, or other security-related tasks. Quickly create a list of dorks based on variables entered.
 
+![20241006 033919-Sun October 06 2024 0339AM](https://github.com/user-attachments/assets/4e959c4f-d534-4104-ad37-0933bc06bdea)
 
-![screenshot](https://github.com/noarche/dorkGen/blob/main/screenshot.png?raw=true)
+![20241006 033857-Sun October 06 2024 0338AM](https://github.com/user-attachments/assets/db6377a5-7b9e-49e7-b8b5-53adca0be849)
 
+# UPDATES
+### OCT 06 2024
+      Added many more dorks for better results. 
+      New version of DorkGen reads the config files to load the default values. Allowing user persistent configurations.
 
 -------------------------------------------------------------------
 -------------------------------------------------------------------
