@@ -2,3 +2,4 @@
 .aspx?
 .html?
 .php?
+.jsp?

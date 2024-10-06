@@ -1,3 +1,4 @@
+
 about
 account
 addr
@@ -19,6 +20,7 @@ choix
 clothing
 cmd
 code
+com_joomla
 contact
 content
 corpo
