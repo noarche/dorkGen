@@ -1,0 +1,4 @@
+.asp?
+.aspx?
+.html?
+.php?
