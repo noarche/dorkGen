@@ -34,7 +34,7 @@ DorkGen is a script for generating combinations of keywords typically used in we
 
 # Looking for a Combolist tool?
 
-Check out my all in one wordlist manipulator. Many useful combo tools. 
+Check out my all in one [wordlist manipulator](https://github.com/noarche/ComboToolPro-GUI). Many useful combo tools. 
 
 https://github.com/noarche/ComboToolPro-GUI
 
