@@ -37,3 +37,7 @@ DorkGen is a script for generating combinations of keywords typically used in we
 Check out my all in one wordlist manipulator. Many useful combo tools. 
 
 https://github.com/noarche/ComboToolPro-GUI
+
+# Need website credential stuffing tool?
+
+[Customizable Website Checker](https://github.com/noarche/brute)
